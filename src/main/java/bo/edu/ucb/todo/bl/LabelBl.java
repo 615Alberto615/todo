@@ -54,4 +54,16 @@ public class LabelBl {
         }
         labels.add(label);
     }
+    public boolean deleteLabelById(Integer id) {
+        LabelDto label = labels.stream()
+                .filter(t -> t.getLabelId().equals(id))
+                .findFirst()
+                .orElse(null);
+        if (label == null) {
+            return false;
+        }
+        labels.remove(label);
+        return true;
+    }
+    
 }
